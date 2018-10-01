@@ -58,48 +58,12 @@ public func ~> <T : NodeConvertible>(reference: Set<T>!, map: Map) throws {
 
 infix operator <~
 
-public func <~ <T: NodeInitializable>(reference: inout T, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
-public func <~ <T: NodeInitializable>(reference: inout T!, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
 public func <~ <T: NodeInitializable>(reference: inout T?, map: Map) throws {
     switch map.type {
     case .toNode:
         break
     case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
-public func <~ <T: NodeInitializable>(reference: inout [T], map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
-public func <~ <T: NodeInitializable>(reference: inout [T]!, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
+        reference = try map.extract(map.lastPath)
     }
 }
 
@@ -108,25 +72,7 @@ public func <~ <T: NodeInitializable>(reference: inout [T]?, map: Map) throws {
     case .toNode:
         break
     case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
-public func <~ <T: NodeInitializable>(reference: inout [[T]], map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
-public func <~ <T: NodeInitializable>(reference: inout [[T]]!, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
+        reference = try map.extract(map.lastPath)
     }
 }
 
@@ -135,25 +81,7 @@ public func <~ <T: NodeInitializable>(reference: inout [[T]]?, map: Map) throws 
     case .toNode:
         break
     case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
-public func <~ <T: NodeInitializable>(reference: inout [String : T], map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
-public func <~ <T: NodeInitializable>(reference: inout [String : T]!, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
+        reference = try map.extract(map.lastPath)
     }
 }
 
@@ -162,25 +90,7 @@ public func <~ <T: NodeInitializable>(reference: inout [String : T]?, map: Map) 
     case .toNode:
         break
     case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
-public func <~ <T: NodeInitializable>(reference: inout [String : [T]], map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
-public func <~ <T: NodeInitializable>(reference: inout [String : [T]]!, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
+        reference = try map.extract(map.lastPath)
     }
 }
 
@@ -189,25 +99,7 @@ public func <~ <T: NodeInitializable>(reference: inout [String : [T]]?, map: Map
     case .toNode:
         break
     case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
-public func <~ <T: NodeInitializable>(reference: inout Set<T>, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
-    }
-}
-
-public func <~ <T: NodeInitializable>(reference: inout Set<T>!, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        break
-    case .fromNode:
-        reference = try map.get(map.lastPath)
+        reference = try map.extract(map.lastPath)
     }
 }
 
@@ -216,7 +108,7 @@ public func <~ <T: NodeInitializable>(reference: inout Set<T>?, map: Map) throws
     case .toNode:
         break
     case .fromNode:
-        reference = try map.get(map.lastPath)
+        reference = try map.extract(map.lastPath)
     }
 }
 
@@ -224,43 +116,7 @@ public func <~ <T: NodeInitializable>(reference: inout Set<T>?, map: Map) throws
 
 infix operator <~>
 
-public func <~> <T: NodeConvertible>(reference: inout T, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
-public func <~> <T: NodeConvertible>(reference: inout T!, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
 public func <~> <T: NodeConvertible>(reference: inout T?, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
-public func <~> <T: NodeConvertible>(reference: inout [T], map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
-public func <~> <T: NodeConvertible>(reference: inout [T]!, map: Map) throws {
     switch map.type {
     case .toNode:
         try reference ~> map
@@ -278,43 +134,7 @@ public func <~> <T: NodeConvertible>(reference: inout [T]?, map: Map) throws {
     }
 }
 
-public func <~> <T: NodeConvertible>(reference: inout [[T]], map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
-public func <~> <T: NodeConvertible>(reference: inout [[T]]!, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
 public func <~> <T: NodeConvertible>(reference: inout [[T]]?, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
-public func <~> <T: NodeConvertible>(reference: inout [String : T], map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
-public func <~> <T: NodeConvertible>(reference: inout [String : T]!, map: Map) throws {
     switch map.type {
     case .toNode:
         try reference ~> map
@@ -332,43 +152,7 @@ public func <~> <T: NodeConvertible>(reference: inout [String : T]?, map: Map) t
     }
 }
 
-public func <~> <T: NodeConvertible>(reference: inout [String : [T]], map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
-public func <~> <T: NodeConvertible>(reference: inout [String : [T]]!, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
 public func <~> <T: NodeConvertible>(reference: inout [String : [T]]?, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
-public func <~> <T: NodeConvertible>(reference: inout Set<T>, map: Map) throws {
-    switch map.type {
-    case .toNode:
-        try reference ~> map
-    case .fromNode:
-        try reference <~ map
-    }
-}
-
-public func <~> <T: NodeConvertible>(reference: inout Set<T>!, map: Map) throws {
     switch map.type {
     case .toNode:
         try reference ~> map
@@ -383,12 +167,5 @@ public func <~> <T: NodeConvertible>(reference: inout Set<T>?, map: Map) throws 
         try reference ~> map
     case .fromNode:
         try reference <~ map
-    }
-}
-
-extension StructuredDataWrapper {
-    public func get<T>(_ indexers: [PathIndexer]) throws -> T {
-        let path = indexers.path()
-        return try get(path)
     }
 }
