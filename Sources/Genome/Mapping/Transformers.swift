@@ -148,17 +148,6 @@ public func <~> <T: NodeConvertible, NodeInputType>
     }
 }
 
-public func <~> <T: NodeConvertible, NodeOutputType: NodeConvertible>
-    (lhs: inout T, rhs: ToNodeTransformer<T, NodeOutputType>) throws {
-
-    switch rhs.map.type {
-    case .fromNode:
-        try lhs <~ rhs.map
-    case .toNode:
-        try lhs ~> rhs
-    }
-}
-
 public func <~> <NodeInput, TransformedType, NodeOutput: NodeConvertible>
     (lhs: inout TransformedType,
      rhs: TwoWayTransformer<NodeInput, TransformedType, NodeOutput>) throws {
